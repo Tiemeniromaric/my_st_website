@@ -1,0 +1,408 @@
+/*==================================================
+    CAMEROON WEBSITE MAIN STYLESHEET
+    Author: Romaric Tchokouaha
+    Purpose: Page layout, navigation, responsive design
+    Notes: Flexbox used for responsiveness instead of floats
+           Images updated to display correctly on mobile
+==================================================*/
+
+
+/*--------------------------------------
+    GLOBAL PAGE STYLES
+--------------------------------------*/
+body {
+    background-color: azure;
+    /* page background color */
+    width: 90%;
+    /* limit content width */
+    padding: 0em 5em;
+    /* center content within body */
+    justify-content: center;
+    font-family: Arial, Helvetica, sans-serif;
+    /* consistent typography */
+}
+
+/* Utility class to clear floats (legacy support) */
+.clear {
+    clear: left;
+}
+
+
+/*--------------------------------------
+    LINK STYLES
+--------------------------------------*/
+a {
+    display: inline-block;
+    text-decoration: none;
+    transition: 0.3s ease;
+    /* smooth hover effects */
+}
+
+a:visited {
+    color: purple;
+}
+
+
+/*--------------------------------------
+    TITLES & SUBTITLES
+--------------------------------------*/
+.subtitle {
+    font-weight: 800;
+    font-size: 1.5em;
+    color: black;
+    padding: 0em 3em 0em 0em;
+}
+
+
+/*--------------------------------------
+    SECTION 1 – FLEXIBLE IMAGE + TEXT
+    Side-by-side on large screens.
+    Stacks vertically on smaller screens.
+--------------------------------------*/
+#section1 {
+    display: flex;
+    /* enable flexible layout */
+    flex-direction: row;
+    /* horizontal alignment */
+    flex-wrap: wrap;
+    /* prevents items from disappearing on small screens */
+    justify-content: flex-start;
+    /* align items from left */
+    align-items: flex-start;
+    /* align items at the top */
+    gap: 2em;
+    /* spacing between image and text */
+    width: 100%;
+    padding: 2em 1em;
+    box-sizing: border-box;
+}
+
+/* Image inside section */
+#img1 {
+    width: 100%;
+    max-width: 300px;
+    /* keeps image manageable */
+    height: auto;
+    image-rendering: auto;
+}
+
+/* Paragraph inside section */
+p.p1 {
+    flex: 1;
+    /* take remaining space beside image */
+    margin: 0;
+    padding-top: 0em;
+    line-height: 1.7em;
+    text-align: left;
+}
+
+
+/*--------------------------------------
+    GLOBAL IMAGE STYLES
+--------------------------------------*/
+img {
+    width: 100%;
+    /* fully responsive */
+    max-width: 300px;
+    /* prevents huge desktop images */
+    height: auto;
+    image-rendering: auto;
+}
+
+/* Specific cultural images */
+.image_fang,
+.image_gf1 {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    image-rendering: auto;
+}
+
+/* Museum image */
+.museum {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    object-fit: cover;
+}
+
+/*--------------------------------------
+    Grid Container
+--------------------------------------*/
+/* Main grid container */
+#main1 {
+    width: 100%;
+    padding: 1em 0;
+    display: grid;
+
+    /* 3 columns on desktop */
+    grid-template-columns: repeat(3, 200px);
+
+    /* 2 rows of equal height (auto adjusts with content) */
+    grid-auto-rows: 150px;
+
+    gap: 20px;
+    justify-content: center;
+    /* center the grid on the page */
+}
+
+/* Each dish card */
+.div1 {
+    background-color: black;
+    color: rgb(2, 31, 11);
+    text-align: center;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+/* Images inside each card */
+.div1 img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* makes images fit nicely */
+    border-radius: 6px;
+}
+
+/* Captions */
+.div1 figcaption {
+    margin-top: 8px;
+    font-size: 0.95em;
+}
+
+/*--------------------------------------
+    PARAGRAPH STYLES
+--------------------------------------*/
+
+p {
+    padding-right: 3em;
+    text-align: left;
+    line-height: 1.6;
+    justify-content: center;
+    align-items: center;
+}
+
+/*--------------------------------------
+    LIST STYLE
+--------------------------------------*/
+main li {
+    text-align: justify;
+    line-height: 1.5;
+}
+
+/*--------------------------------------
+    FOOTER STYLES
+--------------------------------------*/
+footer {
+    color: hsl(258, 89%, 25%);
+}
+
+
+/*--------------------------------------
+    NAVIGATION MENU & DROPDOWNS
+--------------------------------------*/
+#nav_menu {
+    padding-bottom: 3em;
+    margin: auto;
+    width: 100%;
+}
+
+/* Remove default list styling */
+#nav_menu ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Main menu items */
+#nav_menu ul li {
+    float: left;
+    width: 25%;
+    position: relative;
+    /* required for dropdown */
+}
+
+/* Menu link appearance */
+#nav_menu ul li a {
+    text-align: center;
+    display: block;
+    padding: 1em 0;
+    background-color: #2e552e;
+    color: white;
+    font-weight: bold;
+    border-right: 2px solid white;
+    transition: background-color 0.3s ease;
+}
+
+/* Hover effect */
+#nav_menu ul li a:hover {
+    background-color: #334812;
+    border-right: none;
+}
+
+/* Remove right border for last menu item */
+#nav_menu ul li a.lastitem {
+    border-right: none;
+}
+
+
+/*--------------------------------------
+    DROPDOWN MENU
+--------------------------------------*/
+#nav_menu ul ul {
+    display: none;
+    position: absolute;
+    top: 100%;
+    /* appears under parent menu item */
+    left: 0;
+    background-color: #2e552e;
+    width: 100%;
+    z-index: 1000;
+}
+
+/* Each dropdown item full width */
+#nav_menu ul ul li {
+    float: none;
+    width: 100%;
+}
+
+/* Show dropdown on hover/tap */
+#nav_menu ul li:hover>ul {
+    display: block;
+}
+
+#nav_menu ul ul li a:hover {
+    background-color: #446b2e;
+}
+
+
+/*--------------------------------------
+    RESPONSIVE DESIGN – MEDIA QUERIES
+--------------------------------------*/
+
+/* Tablets & medium screens (max 740px) */
+@media only screen and (max-width: 740px) {
+    #section1 {
+        flex-direction: column;
+        /* stack vertically */
+        align-items: left;
+        /* center items */
+        padding: 1em;
+        gap: 1.5em;
+    }
+
+    #img1,
+    .image_fang,
+    .image_gf1 {
+        width: 90%;
+        max-width: 300px;
+    }
+
+    p.p1 {
+        width: 100%;
+        text-align: left;
+        padding-top: 0;
+    }
+}
+
+
+/* Mobile (max 565px) */
+@media only screen and (max-width: 565px) {
+
+    /* Make nav vertical */
+    #nav_menu ul li {
+        float: none;
+        width: 100%;
+        border-right: none;
+        border-bottom: 2px solid white;
+    }
+
+    /* Dropdown adapts to vertical flow */
+    #nav_menu ul ul {
+        position: static;
+        width: 100%;
+        display: none;
+    }
+
+    /* Tap or hover to reveal submenu */
+    #nav_menu ul li:focus-within>ul,
+    #nav_menu ul li:hover>ul {
+        display: block;
+    }
+
+    #nav_menu ul li a {
+        padding: 0.8em 0;
+        font-size: 1em;
+    }
+
+    #nav_menu ul ul li a {
+        padding-left: 1em;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    #main1 {
+        grid-template-columns: repeat(2, 180px);
+        grid-auto-rows: 150px;
+    }
+}
+
+/* Mobile phones – single column layout */
+@media only screen and (max-width: 565px) {
+    #main1 {
+        grid-template-columns: 1fr;
+        /* one full-width column */
+        grid-auto-rows: auto;
+        padding: 0;
+        gap: 15px;
+    }
+
+    .div1 img {
+        height: 200px;
+        /* fixed height for nicer display */
+        object-fit: cover;
+    }
+
+    .div1 figcaption {
+        color: white;
+    }
+}
+
+/* Extra small screens (360px and below) */
+@media only screen and (max-width: 360px) {
+    .div1 figcaption {
+        font-size: 0.85em;
+        color: white;
+    }
+}
+
+
+/* Extra-small screens (max 360px) */
+@media only screen and (max-width: 360px) {
+    body {
+        width: 95%;
+        padding: 0 2em;
+    }
+
+    #img1,
+    .image_fang,
+    .image_gf1 {
+        width: 80%;
+        max-width: 250px;
+    }
+
+    p.p1 {
+        text-align: left;
+        line-height: 1.5em;
+        font-size: 0.9em;
+    }
+
+    #nav_menu ul li a {
+        font-size: 0.9em;
+        padding: 0.6em 0;
+    }
+
+    #nav_menu ul ul li a {
+        padding-left: 0.5em;
+    }
+}
